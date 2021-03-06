@@ -28,7 +28,7 @@ __注意，如果你传入了duration，dialog会在指定的时间后自动消�
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png" align="right" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png" />
 
 ``` dart 
 
@@ -83,7 +83,7 @@ showDialog(
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
 
-<img align="right" src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 
 ``` dart
 
@@ -125,7 +125,7 @@ showDialog(
 
 ```
 
-`ProsteAdvertiseDialog` 纯图片展示的对话框
+3. `ProsteAdvertiseDialog` 纯图片展示的对话框
 
 | 参数 | 参数类型 | 默认值 |
 | :-- | :---: | :---: |
@@ -139,7 +139,7 @@ showDialog(
 | closeBtnSize | double | 32 |
 | duration | Duration | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/ProsteAdvertiseDialog.png" align="right" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/ProsteAdvertiseDialog.png" />
 
 ``` dart
 

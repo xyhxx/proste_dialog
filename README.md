@@ -2,7 +2,7 @@ English | <a href="https://github.com/xyhxx/proste_dialog/blob/master/doc/cn.md"
 
 # Introduce
 
-The function and design idea of package refer to<a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>,at giffy_ Dialog provides higher degree of freedom and stronger scalability,you can use various types of prompts preset in the package, or you can set the widget you want to display.Compared to giffy_ Dialog, customization is not limited to images, you can also pass in any widget or custom animation.proste_dialogneeds ShowDialog to display. If you want to use animation effects in the display process, you can refer to the<a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>.
+The function and design idea of package refer to <a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>,at giffy_ Dialog provides higher degree of freedom and stronger scalability,you can use various types of prompts preset in the package, or you can set the widget you want to display.Compared to giffy_ Dialog, customization is not limited to images, you can also pass in any widget or custom animation.proste_dialogneeds ShowDialog to display. If you want to use animation effects in the display process, you can refer to the <a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>.
 
 # Usage
 
