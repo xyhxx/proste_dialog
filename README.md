@@ -1,4 +1,4 @@
-English | <a href="https://github.com/xyhxx/proste_dialog/blob/master/doc/cn.md">中文</a>
+English | <a href="https://github.com/xyhxx/proste_dialog/blob/master/doc/cn.md" >中文</a>
 
 # Introduce
 
@@ -8,7 +8,7 @@ The function and design idea of package refer to<a href="https://github.com/xsah
 
 __Note that if you pass in duration, the dialog will disappear automatically after the specified time. Even if your showconfirmbutton, showcancelbutton and showcloseicon are all true, the button will not be displayed__
 
-## `ProsteDialog` dialog of preset animation prompt in package
+1. `ProsteDialog` dialog of preset animation prompt in package
 
 | parameter | parameterType | default |
 | :-- | :---: | :---: |
@@ -30,7 +30,7 @@ __Note that if you pass in duration, the dialog will disappear automatically aft
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png" align="right" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png"/>
 
 ``` dart 
 
@@ -63,7 +63,7 @@ showDialog(
 
 ```
 
-## `ProsteCustomDialog` customize dialog for header
+2. `ProsteCustomDialog` customize dialog for header
 
 | parameter | parameterType | default |
 | :-- | :---: | :---: |
@@ -85,7 +85,7 @@ showDialog(
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
 
-<img align="right" src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 
 ``` dart
 
@@ -127,7 +127,7 @@ showDialog(
 
 ```
 
-## `ProsteAdvertiseDialog` Dialog box with pictures only
+3. `ProsteAdvertiseDialog` Dialog box with pictures only
 
 | parameter | parameterType | default |
 | :-- | :---: | :---: |
@@ -141,7 +141,7 @@ showDialog(
 | closeBtnSize | double | 32 |
 | duration | Duration | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/ProsteAdvertiseDialog.png" align="right" />
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/ProsteAdvertiseDialog.png"/>
 
 ``` dart
 
