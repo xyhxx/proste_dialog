@@ -1,14 +1,14 @@
-# Introduce
+# 介绍
 
-The function and design idea of package refer to<a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>,at giffy_ Dialog provides higher degree of freedom and stronger scalability,you can use various types of prompts preset in the package, or you can set the widget you want to display.Compared to giffy_ Dialog, customization is not limited to images, you can also pass in any widget or custom animation.proste_dialogneeds ShowDialog to display. If you want to use animation effects in the display process, you can refer to the<a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>.
+package的功能和设计思路参考了<a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>，在giffy_dialog的基础上提供了更高的自由度和更强的扩展性，您可以使用package中预设的各种类型提示，您也可以自己设置想要展示的元素。相比于giffy_dialog，自定义不仅限于图片，您也可以传入任何widget或者自定义的动画。proste_dialog需要通过showDialog来进行展示，如果您想要在展示过程中使用动画效果，可以参考<a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>。
 
-# Usage
+# 使用
 
-__Note that if you pass in duration, the dialog will disappear automatically after the specified time. Even if your showconfirmbutton, showcancelbutton and showcloseicon are all true, the button will not be displayed__
+__注意，如果你传入了duration，dialog会在指定的时间后自动消失，即使你的showConfirmButton，showCancelButton, showCloseIcon 都为ture，按钮也是不会显示的__
 
-1. `ProsteDialog` dialog of preset animation prompt in package
+1. `ProsteDialog` package内预设动画提示的dialog
 
-| parameter | parameterType | default |
+| 参数 | 参数类型 | 默认值 |
 | :-- | :---: | :---: |
 | insetPadding | EdgeInsets | EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0) | 
 | dialogRadius | double | 5 | 
@@ -61,9 +61,9 @@ showDialog(
 
 ```
 
-2. `ProsteCustomDialog` customize dialog for header
+2. `ProsteCustomDialog` 自定义头部的dialog
 
-| parameter | parameterType | default |
+| 参数 | 参数类型 | 默认值 |
 | :-- | :---: | :---: |
 | insetPadding | EdgeInsets | EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0) | 
 | dialogRadius | double | 5 | 
@@ -125,9 +125,9 @@ showDialog(
 
 ```
 
-`ProsteAdvertiseDialog` Dialog box with pictures only
+`ProsteAdvertiseDialog` 纯图片展示的对话框
 
-| parameter | parameterType | default |
+| 参数 | 参数类型 | 默认值 |
 | :-- | :---: | :---: |
 | factor | double (0< value <=1) | .9 |
 | image | ImageProvider(required) | null |
@@ -164,5 +164,6 @@ showDialog(
 );
 
 ```
+
 # Issue
-If there is any problem or bug, please submit it to <a href="https://github.com/xyhxx/proste_dialog/issues">issue</a>, I will deal with it as soon as I see it, thanks!
+如果有任何问题或者bug请提交到<a href="https://github.com/xyhxx/proste_dialog/issues">issue</a>，我会在看到后尽快处理，感谢！
