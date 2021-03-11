@@ -8,3 +8,7 @@
 ## [1.0.1]
 
 * supplement readme
+
+## [1.0.2]
+
+* add _scaleController.dispose();

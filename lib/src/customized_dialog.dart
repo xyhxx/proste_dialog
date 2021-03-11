@@ -156,6 +156,7 @@ class _ProsteDialogState extends State<ProsteDialog>
   void dispose() {
     _time?.cancel();
     _controller.dispose();
+    _scaleController.dispose();
     super.dispose();
   }
 

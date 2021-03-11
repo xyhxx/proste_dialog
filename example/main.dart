@@ -124,6 +124,40 @@ class _MyAppHomeState extends State<MyAppHome>
                         print('preinstall cancel pressed');
                         Navigator.pop(context);
                       },
+                      duration: Duration(seconds: 3),
+                    ),
+                  );
+                },
+                child: Text('auto close preinstall'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => ProsteDialog(
+                      type: _tipType,
+                      content: Text('this is package preinstall dialog'),
+                      insetPadding: EdgeInsets.all(15),
+                      dialogRadius: 10,
+                      title: Text('this is package preinstall dialog title'),
+                      titlePadding: EdgeInsets.only(top: 20),
+                      contentPadding: EdgeInsets.all(15),
+                      confirmButtonText:
+                          Text('next', style: TextStyle(color: Colors.white)),
+                      cancelButtonText:
+                          Text('back', style: TextStyle(color: Colors.green)),
+                      showConfirmButton: true,
+                      showCancelButton: true,
+                      confirmButtonColor: Colors.cyan,
+                      cancelButtonColor: Colors.black,
+                      onConfirm: () {
+                        print('preinstall confirm pressed');
+                        Navigator.pop(context);
+                      },
+                      onCancel: () {
+                        print('preinstall cancel pressed');
+                        Navigator.pop(context);
+                      },
                     ),
                   );
                 },
