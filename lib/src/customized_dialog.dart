@@ -12,6 +12,7 @@ enum DialogTipType {
 
 class ProsteDialog extends StatefulWidget {
   ProsteDialog({
+    Key? key,
     this.insetPadding =
         const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
@@ -30,7 +31,7 @@ class ProsteDialog extends StatefulWidget {
     this.onConfirm,
     this.onCancel,
     this.duration,
-  });
+  }) : super(key: key);
 
   /// dialog与屏幕之间的间距
   final EdgeInsets insetPadding;

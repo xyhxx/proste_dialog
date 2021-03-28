@@ -6,6 +6,7 @@ import 'package:proste_dialog/src/dialog_base.dart';
 /// 显示自定义的dialog
 class ProsteCustomDialog extends StatefulWidget {
   ProsteCustomDialog({
+    Key? key,
     this.insetPadding =
         const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
@@ -24,7 +25,7 @@ class ProsteCustomDialog extends StatefulWidget {
     this.onConfirm,
     this.onCancel,
     this.duration,
-  });
+  }) : super(key: key);
 
   /// dialog与屏幕之间的间距
   final EdgeInsets insetPadding;

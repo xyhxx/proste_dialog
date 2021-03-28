@@ -9,6 +9,7 @@ const IconData closeIcon =
 /// 宣传图片弹窗
 class ProsteAdvertiseDialog extends StatefulWidget {
   ProsteAdvertiseDialog({
+    Key? key,
     this.factor = .9,
     required this.image,
     this.closeIconColor = Colors.white70,
@@ -19,7 +20,8 @@ class ProsteAdvertiseDialog extends StatefulWidget {
     this.closeBtnSize = 32,
     this.duration,
   })  : assert(factor > 0),
-        assert(factor <= 1);
+        assert(factor <= 1),
+        super(key: key);
 
   /// 图片所占屏幕宽度 值在0~1之间
   final double factor;

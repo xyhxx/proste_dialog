@@ -12,3 +12,7 @@
 ## [1.0.2]
 
 * add _scaleController.dispose();
+
+## [1.1.0]
+
+* add Key

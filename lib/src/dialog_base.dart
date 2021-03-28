@@ -6,6 +6,7 @@ const EdgeInsets _defaultInsetPadding =
 
 class ProsteBaseDialog extends StatelessWidget {
   ProsteBaseDialog({
+    Key? key,
     this.insetPadding = _defaultInsetPadding,
     this.dialogRadius = 5,
     this.widget,
@@ -22,7 +23,7 @@ class ProsteBaseDialog extends StatelessWidget {
     this.cancelButtonColor,
     this.onConfirm,
     this.onCancel,
-  });
+  }) : super(key: key);
 
   /// dialog与屏幕之间的间距
   final EdgeInsets insetPadding;
