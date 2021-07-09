@@ -13,8 +13,7 @@ enum DialogTipType {
 class ProsteDialog extends StatefulWidget {
   ProsteDialog({
     Key? key,
-    this.insetPadding =
-        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
     this.type = DialogTipType.success,
     this.title,
@@ -31,6 +30,9 @@ class ProsteDialog extends StatefulWidget {
     this.onConfirm,
     this.onCancel,
     this.duration,
+    this.backgroundColor = Colors.white,
+    this.elevation = 0,
+    this.shadowColor,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -83,12 +85,21 @@ class ProsteDialog extends StatefulWidget {
 
   /// 显示时间
   final Duration? duration;
+
+  /// dialog背景色
+  final Color? backgroundColor;
+
+  /// 内容框的elevation属性
+  final double? elevation;
+
+  /// 阴影颜色
+  final Color? shadowColor;
+
   @override
   _ProsteDialogState createState() => _ProsteDialogState();
 }
 
-class _ProsteDialogState extends State<ProsteDialog>
-    with TickerProviderStateMixin {
+class _ProsteDialogState extends State<ProsteDialog> with TickerProviderStateMixin {
   /// 演示关闭控制器
   Timer? _time;
 
@@ -122,33 +133,20 @@ class _ProsteDialogState extends State<ProsteDialog>
       _time = Timer(widget.duration!, () => Navigator.pop(context));
     }
     // 判断动画类型
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1))
-          ..forward();
-    _scaleController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300))
-          ..forward();
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 1))..forward();
+    _scaleController = AnimationController(vsync: this, duration: Duration(milliseconds: 300))..forward();
     switch (widget.type) {
       case DialogTipType.success:
-        _scaleAnimation =
-            Tween<double>(begin: .3, end: 1).animate(_scaleController);
-        _rotationAnimation = Tween<double>(begin: pi / 2, end: 0)
-            .chain(CurveTween(curve: Curves.bounceOut))
-            .animate(_controller);
+        _scaleAnimation = Tween<double>(begin: .3, end: 1).animate(_scaleController);
+        _rotationAnimation = Tween<double>(begin: pi / 2, end: 0).chain(CurveTween(curve: Curves.bounceOut)).animate(_controller);
         break;
       case DialogTipType.warn:
-        _scaleAnimation =
-            Tween<double>(begin: 1.5, end: 1).animate(_scaleController);
-        _translationAnimation = Tween<double>(begin: -25, end: 0)
-            .chain(CurveTween(curve: Curves.bounceOut))
-            .animate(_controller);
+        _scaleAnimation = Tween<double>(begin: 1.5, end: 1).animate(_scaleController);
+        _translationAnimation = Tween<double>(begin: -25, end: 0).chain(CurveTween(curve: Curves.bounceOut)).animate(_controller);
         break;
       case DialogTipType.error:
-        _scaleAnimation =
-            Tween<double>(begin: .3, end: 1).animate(_scaleController);
-        _rotationAnimation = Tween<double>(begin: pi / 2, end: 0)
-            .chain(CurveTween(curve: Curves.elasticOut))
-            .animate(_controller);
+        _scaleAnimation = Tween<double>(begin: .3, end: 1).animate(_scaleController);
+        _rotationAnimation = Tween<double>(begin: pi / 2, end: 0).chain(CurveTween(curve: Curves.elasticOut)).animate(_controller);
         break;
     }
   }
@@ -197,8 +195,7 @@ class _ProsteDialogState extends State<ProsteDialog>
               return Transform.scale(
                 scale: _scaleAnimation!.value,
                 child: Transform(
-                  transform: Matrix4.translationValues(
-                      0, _translationAnimation!.value, 0),
+                  transform: Matrix4.translationValues(0, _translationAnimation!.value, 0),
                   child: child,
                 ),
               );
@@ -244,15 +241,16 @@ class _ProsteDialogState extends State<ProsteDialog>
       contentPadding: widget.contentPadding,
       confirmButtonText: widget.confirmButtonText,
       cancelButtonText: widget.cancelButtonText,
-      showConfirmButton:
-          widget.duration == null ? widget.showConfirmButton : false,
-      showCancelButton:
-          widget.duration == null ? widget.showCancelButton : false,
+      showConfirmButton: widget.duration == null ? widget.showConfirmButton : false,
+      showCancelButton: widget.duration == null ? widget.showCancelButton : false,
       buttonRadius: widget.buttonRadius,
       confirmButtonColor: widget.confirmButtonColor,
       cancelButtonColor: widget.cancelButtonColor,
       onConfirm: widget.onConfirm,
       onCancel: widget.onCancel,
+      backgroundColor: widget.backgroundColor,
+      elevation: widget.elevation,
+      shadowColor: widget.shadowColor,
     );
   }
 }

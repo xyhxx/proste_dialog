@@ -29,6 +29,9 @@ __Note that if you pass in duration, the dialog will disappear automatically aft
 | onConfirm | void Funtion() | null |
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
+| background | Color | Colors.white |
+| elevation | double | 0 |
+| shadowColor | Color | null |
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png"/>
 
@@ -84,6 +87,9 @@ showDialog(
 | onConfirm | void Funtion() | null |
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
+| background | Color | Colors.white |
+| elevation | double | 0 |
+| shadowColor | Color | null |
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 

@@ -27,6 +27,9 @@ __注意，如果你传入了duration，dialog会在指定的时间后自动消�
 | onConfirm | void Funtion() | null |
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
+| background | Color | Colors.white |
+| elevation | double | 0 |
+| shadowColor | Color | null |
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png" />
 
@@ -82,6 +85,9 @@ showDialog(
 | onConfirm | void Funtion() | null |
 | onCancel | void Funtion() | null |
 | duration | Duration | null |
+| background | Color | Colors.white |
+| elevation | double | 0 |
+| shadowColor | Color | null |
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 

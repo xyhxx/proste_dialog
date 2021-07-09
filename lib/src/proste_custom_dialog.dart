@@ -7,8 +7,7 @@ import 'package:proste_dialog/src/dialog_base.dart';
 class ProsteCustomDialog extends StatefulWidget {
   ProsteCustomDialog({
     Key? key,
-    this.insetPadding =
-        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
     this.header,
     this.title,
@@ -25,6 +24,9 @@ class ProsteCustomDialog extends StatefulWidget {
     this.onConfirm,
     this.onCancel,
     this.duration,
+    this.backgroundColor = Colors.white,
+    this.elevation = 0,
+    this.shadowColor,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -78,6 +80,15 @@ class ProsteCustomDialog extends StatefulWidget {
   /// 显示时间
   final Duration? duration;
 
+  /// dialog背景色
+  final Color? backgroundColor;
+
+  /// 内容框的elevation属性
+  final double? elevation;
+
+  /// 阴影颜色
+  final Color? shadowColor;
+
   @override
   _ProsteCustomDailogState createState() => _ProsteCustomDailogState();
 }
@@ -111,15 +122,16 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       contentPadding: widget.contentPadding,
       confirmButtonText: widget.confirmButtonText,
       cancelButtonText: widget.cancelButtonText,
-      showConfirmButton:
-          widget.duration == null ? widget.showConfirmButton : false,
-      showCancelButton:
-          widget.duration == null ? widget.showCancelButton : false,
+      showConfirmButton: widget.duration == null ? widget.showConfirmButton : false,
+      showCancelButton: widget.duration == null ? widget.showCancelButton : false,
       buttonRadius: widget.buttonRadius,
       confirmButtonColor: widget.confirmButtonColor,
       cancelButtonColor: widget.cancelButtonColor,
       onConfirm: widget.onConfirm,
       onCancel: widget.onCancel,
+      backgroundColor: widget.backgroundColor,
+      elevation: widget.elevation,
+      shadowColor: widget.shadowColor,
     );
   }
 }

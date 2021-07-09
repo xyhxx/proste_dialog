@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 默认间距
-const EdgeInsets _defaultInsetPadding =
-    EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
+const EdgeInsets _defaultInsetPadding = EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
 
 class ProsteBaseDialog extends StatelessWidget {
   ProsteBaseDialog({
@@ -23,6 +22,9 @@ class ProsteBaseDialog extends StatelessWidget {
     this.cancelButtonColor,
     this.onConfirm,
     this.onCancel,
+    this.backgroundColor = Colors.white,
+    this.elevation = 0,
+    this.shadowColor,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -73,6 +75,15 @@ class ProsteBaseDialog extends StatelessWidget {
   /// 取消按钮点击事件
   final void Function()? onCancel;
 
+  /// dialog背景色
+  final Color? backgroundColor;
+
+  /// card的elevation
+  final double? elevation;
+
+  /// 阴影颜色
+  final Color? shadowColor;
+
   /// 标题和描述内容
   List<Widget> _infoWidget() {
     return [
@@ -94,9 +105,7 @@ class ProsteBaseDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 15),
       child: Row(
-        mainAxisAlignment: showConfirmButton && showCancelButton
-            ? MainAxisAlignment.spaceEvenly
-            : MainAxisAlignment.center,
+        mainAxisAlignment: showConfirmButton && showCancelButton ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
         children: [
           if (showCancelButton)
             ElevatedButton(
@@ -143,7 +152,7 @@ class ProsteBaseDialog extends StatelessWidget {
       child: OrientationBuilder(
         builder: (context, orientation) {
           bool isPortrait = orientation == Orientation.portrait;
-          return Container(
+          return ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: 0,
               maxHeight: isPortrait ? screenHeight * .8 : double.infinity,
@@ -151,6 +160,9 @@ class ProsteBaseDialog extends StatelessWidget {
               maxWidth: double.infinity,
             ),
             child: Card(
+              elevation: elevation,
+              shadowColor: shadowColor,
+              color: backgroundColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(dialogRadius),
               ),
@@ -167,8 +179,7 @@ class ProsteBaseDialog extends StatelessWidget {
                             child: widget,
                           ),
                         ..._infoWidget(),
-                        if (showConfirmButton || showCancelButton)
-                          _btnGroupWidget(context),
+                        if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
                       ],
                     )
                   : Row(
@@ -179,9 +190,7 @@ class ProsteBaseDialog extends StatelessWidget {
                         if (widget != null)
                           Expanded(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(dialogRadius),
-                                  bottomLeft: Radius.circular(dialogRadius)),
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(dialogRadius), bottomLeft: Radius.circular(dialogRadius)),
                               child: widget,
                             ),
                           ),
@@ -190,8 +199,7 @@ class ProsteBaseDialog extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ..._infoWidget(),
-                              if (showConfirmButton || showCancelButton)
-                                _btnGroupWidget(context),
+                              if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
                             ],
                           ),
                         ),
