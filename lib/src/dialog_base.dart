@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// 默认间距
-const EdgeInsets _defaultInsetPadding = EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
+const EdgeInsets _defaultInsetPadding =
+    EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
 
 class ProsteBaseDialog extends StatelessWidget {
   ProsteBaseDialog({
@@ -105,7 +106,9 @@ class ProsteBaseDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 15),
       child: Row(
-        mainAxisAlignment: showConfirmButton && showCancelButton ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
+        mainAxisAlignment: showConfirmButton && showCancelButton
+            ? MainAxisAlignment.spaceEvenly
+            : MainAxisAlignment.center,
         children: [
           if (showCancelButton)
             ElevatedButton(
@@ -179,7 +182,8 @@ class ProsteBaseDialog extends StatelessWidget {
                             child: widget,
                           ),
                         ..._infoWidget(),
-                        if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
+                        if (showConfirmButton || showCancelButton)
+                          _btnGroupWidget(context),
                       ],
                     )
                   : Row(
@@ -190,7 +194,9 @@ class ProsteBaseDialog extends StatelessWidget {
                         if (widget != null)
                           Expanded(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(dialogRadius), bottomLeft: Radius.circular(dialogRadius)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(dialogRadius),
+                                  bottomLeft: Radius.circular(dialogRadius)),
                               child: widget,
                             ),
                           ),
@@ -199,7 +205,8 @@ class ProsteBaseDialog extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ..._infoWidget(),
-                              if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
+                              if (showConfirmButton || showCancelButton)
+                                _btnGroupWidget(context),
                             ],
                           ),
                         ),

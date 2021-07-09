@@ -7,7 +7,8 @@ import 'package:proste_dialog/src/dialog_base.dart';
 class ProsteCustomDialog extends StatefulWidget {
   ProsteCustomDialog({
     Key? key,
-    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetPadding =
+        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
     this.header,
     this.title,
@@ -122,8 +123,10 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       contentPadding: widget.contentPadding,
       confirmButtonText: widget.confirmButtonText,
       cancelButtonText: widget.cancelButtonText,
-      showConfirmButton: widget.duration == null ? widget.showConfirmButton : false,
-      showCancelButton: widget.duration == null ? widget.showCancelButton : false,
+      showConfirmButton:
+          widget.duration == null ? widget.showConfirmButton : false,
+      showCancelButton:
+          widget.duration == null ? widget.showCancelButton : false,
       buttonRadius: widget.buttonRadius,
       confirmButtonColor: widget.confirmButtonColor,
       cancelButtonColor: widget.cancelButtonColor,
