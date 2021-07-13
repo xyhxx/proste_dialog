@@ -232,6 +232,7 @@ class ProsteBaseDialog extends StatelessWidget {
                       children: [
                         if (widget != null)
                           Container(
+                            clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(dialogRadius),
@@ -253,6 +254,7 @@ class ProsteBaseDialog extends StatelessWidget {
                         if (widget != null)
                           Expanded(
                             child: Container(
+                              clipBehavior: Clip.antiAlias,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(dialogRadius),

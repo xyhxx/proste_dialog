@@ -173,6 +173,7 @@ class _MyAppHomeState extends State<MyAppHome>
                     context: context,
                     builder: (_) => ProsteDialog(
                       type: _tipType,
+                      dialogRadius: 7,
                       content: Text('this is package preinstall dialog'),
                       insetPadding: EdgeInsets.all(15),
                       title: Text('this is package preinstall dialog title'),
@@ -210,7 +211,11 @@ class _MyAppHomeState extends State<MyAppHome>
                       content: Text('this is auto close dialog'),
                       showCancelButton: true,
                       showConfirmButton: true,
-                      header: Image.asset(assetImg),
+                      dialogRadius: 10,
+                      header: Image.asset(
+                        assetImg,
+                        fit: BoxFit.cover,
+                      ),
                       backgroundColor: Colors.pink,
                       duration: Duration(seconds: 2),
                     ),
@@ -229,7 +234,7 @@ class _MyAppHomeState extends State<MyAppHome>
                     context: context,
                     builder: (_) => ProsteCustomDialog(
                       insetPadding: EdgeInsets.symmetric(horizontal: 30),
-                      dialogRadius: 4,
+                      dialogRadius: 8,
                       header: AnimatedBuilder(
                         animation: _animationController,
                         builder: (context, child) {
