@@ -195,7 +195,7 @@ class ProsteBaseDialog extends StatelessWidget {
               padding: MaterialStateProperty.all(btnPadding),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            onPressed: onConfirm ?? () => Navigator.pop(context),
+            onPressed: onCancel ?? () => Navigator.pop(context),
             child: cancelButtonText,
           ),
       ],
