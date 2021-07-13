@@ -27,6 +27,7 @@ class ProsteBaseDialog extends StatelessWidget {
     this.shadowColor,
     this.btnInARow = true,
     this.btnPadding,
+    this.columnConfirmBtnMargin,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -92,6 +93,9 @@ class ProsteBaseDialog extends StatelessWidget {
   /// 按钮的padding
   final EdgeInsets? btnPadding;
 
+  /// 不是同一行是确认按钮的margin
+  final EdgeInsets? columnConfirmBtnMargin;
+
   /// 标题和描述内容
   List<Widget> _infoWidget() {
     return [
@@ -124,7 +128,7 @@ class ProsteBaseDialog extends StatelessWidget {
         if (showCancelButton)
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+              backgroundColor: MaterialStateProperty.all(cancelButtonColor ?? Colors.grey[400]),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(buttonRadius),
@@ -160,6 +164,7 @@ class ProsteBaseDialog extends StatelessWidget {
         if (showConfirmButton)
           Container(
             width: double.infinity,
+            padding: columnConfirmBtnMargin ?? EdgeInsets.symmetric(horizontal: 15),
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
@@ -179,10 +184,11 @@ class ProsteBaseDialog extends StatelessWidget {
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               padding: MaterialStateProperty.all(btnPadding),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             onPressed: onConfirm ?? () => Navigator.pop(context),
-            child: confirmButtonText,
-          )
+            child: cancelButtonText,
+          ),
       ],
     );
   }
@@ -216,10 +222,12 @@ class ProsteBaseDialog extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (widget != null)
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(dialogRadius),
-                              topRight: Radius.circular(dialogRadius),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(dialogRadius),
+                                topRight: Radius.circular(dialogRadius),
+                              ),
                             ),
                             child: widget,
                           ),
@@ -234,8 +242,13 @@ class ProsteBaseDialog extends StatelessWidget {
                       children: [
                         if (widget != null)
                           Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(dialogRadius), bottomLeft: Radius.circular(dialogRadius)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(dialogRadius),
+                                  bottomLeft: Radius.circular(dialogRadius),
+                                ),
+                              ),
                               child: widget,
                             ),
                           ),

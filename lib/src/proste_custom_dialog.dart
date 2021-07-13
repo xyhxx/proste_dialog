@@ -7,8 +7,7 @@ import 'package:proste_dialog/src/dialog_base.dart';
 class ProsteCustomDialog extends StatefulWidget {
   ProsteCustomDialog({
     Key? key,
-    this.insetPadding =
-        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
     this.header,
     this.title,
@@ -28,6 +27,9 @@ class ProsteCustomDialog extends StatefulWidget {
     this.backgroundColor = Colors.white,
     this.elevation = 0,
     this.shadowColor,
+    this.btnInARow = true,
+    this.btnPadding,
+    this.columnConfirmBtnMargin,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -90,6 +92,15 @@ class ProsteCustomDialog extends StatefulWidget {
   /// 阴影颜色
   final Color? shadowColor;
 
+  /// 按钮是否放在同一行
+  final bool btnInARow;
+
+  /// 按钮的padding
+  final EdgeInsets? btnPadding;
+
+  /// 不是同一行是确认按钮的margin
+  final EdgeInsets? columnConfirmBtnMargin;
+
   @override
   _ProsteCustomDailogState createState() => _ProsteCustomDailogState();
 }
@@ -123,10 +134,8 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       contentPadding: widget.contentPadding,
       confirmButtonText: widget.confirmButtonText,
       cancelButtonText: widget.cancelButtonText,
-      showConfirmButton:
-          widget.duration == null ? widget.showConfirmButton : false,
-      showCancelButton:
-          widget.duration == null ? widget.showCancelButton : false,
+      showConfirmButton: widget.duration == null ? widget.showConfirmButton : false,
+      showCancelButton: widget.duration == null ? widget.showCancelButton : false,
       buttonRadius: widget.buttonRadius,
       confirmButtonColor: widget.confirmButtonColor,
       cancelButtonColor: widget.cancelButtonColor,
@@ -135,6 +144,9 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       backgroundColor: widget.backgroundColor,
       elevation: widget.elevation,
       shadowColor: widget.shadowColor,
+      btnInARow: widget.btnInARow,
+      btnPadding: widget.btnPadding,
+      columnConfirmBtnMargin: widget.columnConfirmBtnMargin,
     );
   }
 }
