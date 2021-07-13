@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// 关闭按钮字体Icon
-const IconData closeIcon = IconData(0xe67a, fontFamily: 'AliIcon', fontPackage: 'proste_dialog');
+const IconData closeIcon =
+    IconData(0xe67a, fontFamily: 'AliIcon', fontPackage: 'proste_dialog');
 
 /// 宣传图片弹窗
 class ProsteAdvertiseDialog extends StatefulWidget {

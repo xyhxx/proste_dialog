@@ -2,9 +2,47 @@
 
 package的功能和设计思路参考了<a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>，在giffy_dialog的基础上提供了更高的自由度和更强的扩展性，您可以使用package中预设的各种类型提示，您也可以自己设置想要展示的元素。相比于giffy_dialog，自定义不仅限于图片，您也可以传入任何widget或者自定义的动画。proste_dialog需要通过showDialog来进行展示，如果您想要在展示过程中使用动画效果，可以参考<a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>。
 
+# 2.0.0 添加了新的按钮布局方式
+
+只需要设置`btnInARow: false` 即可, 如果你想要增加按钮之间的距离或者确认按钮与边界的距离，只需要设置`confirmButtonMargin`，注意，这个属性只有`btnsInARow: false`时生效。
+
+
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/btns%20vertical.png" />
+
+
+``` dart
+ProsteDialog(
+  type: _tipType,
+  content: Text('this is package preinstall dialog'),
+  insetPadding: EdgeInsets.all(15),
+  title: Text('this is package preinstall dialog title'),
+  titlePadding: EdgeInsets.only(top: 20),
+  contentPadding: EdgeInsets.all(15),
+  confirmButtonColor: Colors.pink,
+  confirmButtonText: Text('confirm', style: TextStyle(color: Colors.white)),
+  cancelButtonText: Text('ignore', style: TextStyle(color: Colors.grey[600])),
+  showConfirmButton: true,
+  showCancelButton: true,
+  btnsInARow: false,
+  btnPadding: EdgeInsets.symmetric(vertical: 10),
+  confirmButtonMargin: EdgeInsets.symmetric(horizontal: 50),
+  buttonRadius: 20,
+  onConfirm: () {
+    print('preinstall confirm pressed');
+    Navigator.pop(context);
+  },
+  onCancel: () {
+    print('preinstall cancel pressed');
+    Navigator.pop(context);
+  },
+);
+```
+
 # 使用
 
 __注意，如果你传入了duration，dialog会在指定的时间后自动消失，即使你的showConfirmButton，showCancelButton, showCloseIcon 都为ture，按钮也是不会显示的__
+
+__只有当btnInARow为false时，columnconfirmButtonMargin才会生效__
 
 1. `ProsteDialog` package内预设动画提示的dialog
 
@@ -30,8 +68,12 @@ __注意，如果你传入了duration，dialog会在指定的时间后自动消�
 | background | Color | Colors.white |
 | elevation | double | 0 |
 | shadowColor | Color | null |
+| btnInARow | boolean | true |
+| btnPadding | EdgeInsets | null |
+| confirmButtonMargin | EdgeInsets | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png" />
+
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preview.gif" />
 
 ``` dart 
 
@@ -88,6 +130,10 @@ showDialog(
 | background | Color | Colors.white |
 | elevation | double | 0 |
 | shadowColor | Color | null |
+| btnInARow | boolean | true |
+| btnPadding | EdgeInsets | null |
+| confirmButtonMargin | EdgeInsets | null |
+
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 

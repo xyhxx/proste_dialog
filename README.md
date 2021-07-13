@@ -4,9 +4,47 @@ English | <a href="https://github.com/xyhxx/proste_dialog/blob/master/doc/cn.md"
 
 The function and design idea of package refer to <a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>,compared with giffy_dialog, provides higher degree of freedom and stronger scalability,you can use various types of prompts preset in the package, or you can set the widget you want to display.Compared to giffy_ Dialog, customization is not limited to images, you can also pass in any widget or custom animation.proste_dialog needs ShowDialog to display. If you want to use animation effects in the display process, you can refer to the <a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>.
 
+# 2.0.0 add new button layout
+
+only set `btnInARow: false` is fine, if you want to adjust the distance between the two buttons or the distance between the button and the border, you can set `confirmButtonMargin`, which only takes effect when `btnsInARow: false`
+
+
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/btns%20vertical.png" />
+
+
+``` dart
+ProsteDialog(
+  type: _tipType,
+  content: Text('this is package preinstall dialog'),
+  insetPadding: EdgeInsets.all(15),
+  title: Text('this is package preinstall dialog title'),
+  titlePadding: EdgeInsets.only(top: 20),
+  contentPadding: EdgeInsets.all(15),
+  confirmButtonColor: Colors.pink,
+  confirmButtonText: Text('confirm', style: TextStyle(color: Colors.white)),
+  cancelButtonText: Text('ignore', style: TextStyle(color: Colors.grey[600])),
+  showConfirmButton: true,
+  showCancelButton: true,
+  btnsInARow: false,
+  btnPadding: EdgeInsets.symmetric(vertical: 10),
+  confirmButtonMargin: EdgeInsets.symmetric(horizontal: 50),
+  buttonRadius: 20,
+  onConfirm: () {
+    print('preinstall confirm pressed');
+    Navigator.pop(context);
+  },
+  onCancel: () {
+    print('preinstall cancel pressed');
+    Navigator.pop(context);
+  },
+);
+```
+
 # Usage
 
 __Note that if you pass in duration, the dialog will disappear automatically after the specified time. Even if your showconfirmbutton, showcancelbutton and showcloseicon are all true, the button will not be displayed__
+
+__confirmButtonMargin is only butsInARow is false is it valid__
 
 1. `ProsteDialog` dialog of preset animation prompt in package
 
@@ -32,8 +70,11 @@ __Note that if you pass in duration, the dialog will disappear automatically aft
 | background | Color | Colors.white |
 | elevation | double | 0 |
 | shadowColor | Color | null |
+| btnInARow | boolean | true |
+| btnPadding | EdgeInsets | null |
+| confirmButtonMargin | EdgeInsets | null |
 
-<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preinstall.png"/>
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/preview.gif"/>
 
 ``` dart 
 
@@ -90,6 +131,10 @@ showDialog(
 | background | Color | Colors.white |
 | elevation | double | 0 |
 | shadowColor | Color | null |
+| btnInARow | boolean | true |
+| btnPadding | EdgeInsets | null |
+| confirmButtonMargin | EdgeInsets | null |
+
 
 <img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/proste_dialog/custom2.png" />
 

@@ -7,7 +7,8 @@ import 'package:proste_dialog/src/dialog_base.dart';
 class ProsteCustomDialog extends StatefulWidget {
   ProsteCustomDialog({
     Key? key,
-    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetPadding =
+        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     this.dialogRadius = 5,
     this.header,
     this.title,
@@ -27,9 +28,9 @@ class ProsteCustomDialog extends StatefulWidget {
     this.backgroundColor = Colors.white,
     this.elevation = 0,
     this.shadowColor,
-    this.btnInARow = true,
+    this.btnsInARow = true,
     this.btnPadding,
-    this.columnConfirmBtnMargin,
+    this.confirmButtonMargin,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -93,13 +94,13 @@ class ProsteCustomDialog extends StatefulWidget {
   final Color? shadowColor;
 
   /// 按钮是否放在同一行
-  final bool btnInARow;
+  final bool btnsInARow;
 
   /// 按钮的padding
   final EdgeInsets? btnPadding;
 
   /// 不是同一行是确认按钮的margin
-  final EdgeInsets? columnConfirmBtnMargin;
+  final EdgeInsets? confirmButtonMargin;
 
   @override
   _ProsteCustomDailogState createState() => _ProsteCustomDailogState();
@@ -134,8 +135,10 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       contentPadding: widget.contentPadding,
       confirmButtonText: widget.confirmButtonText,
       cancelButtonText: widget.cancelButtonText,
-      showConfirmButton: widget.duration == null ? widget.showConfirmButton : false,
-      showCancelButton: widget.duration == null ? widget.showCancelButton : false,
+      showConfirmButton:
+          widget.duration == null ? widget.showConfirmButton : false,
+      showCancelButton:
+          widget.duration == null ? widget.showCancelButton : false,
       buttonRadius: widget.buttonRadius,
       confirmButtonColor: widget.confirmButtonColor,
       cancelButtonColor: widget.cancelButtonColor,
@@ -144,9 +147,9 @@ class _ProsteCustomDailogState extends State<ProsteCustomDialog> {
       backgroundColor: widget.backgroundColor,
       elevation: widget.elevation,
       shadowColor: widget.shadowColor,
-      btnInARow: widget.btnInARow,
+      btnInARow: widget.btnsInARow,
       btnPadding: widget.btnPadding,
-      columnConfirmBtnMargin: widget.columnConfirmBtnMargin,
+      confirmButtonMargin: widget.confirmButtonMargin,
     );
   }
 }
