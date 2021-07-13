@@ -19,8 +19,7 @@ class MyAppHome extends StatefulWidget {
   _MyAppHomeState createState() => _MyAppHomeState();
 }
 
-class _MyAppHomeState extends State<MyAppHome>
-    with SingleTickerProviderStateMixin {
+class _MyAppHomeState extends State<MyAppHome> with SingleTickerProviderStateMixin {
   DialogTipType _tipType = DialogTipType.success;
   late Animation _animation;
   late AnimationController _animationController;
@@ -28,18 +27,14 @@ class _MyAppHomeState extends State<MyAppHome>
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
-    _animation =
-        Tween<double>(begin: 80, end: 200).animate(_animationController);
+    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _animation = Tween<double>(begin: 80, end: 200).animate(_animationController);
   }
 
   @override
   Widget build(BuildContext context) {
-    final String networkImg2 =
-        'https://hbimg.huabanimg.com/f9012b3b86d3d90eb3b2fa8742261026c1eaa88b9c44b-CvNWds_fw658/format/webp';
-    final String networkImg =
-        'https://hbimg.huabanimg.com/06ef627a592f6c6b638720935b5e41782cafafe363c975-d13YKk_fw658/format/webp';
+    final String networkImg2 = 'https://hbimg.huabanimg.com/f9012b3b86d3d90eb3b2fa8742261026c1eaa88b9c44b-CvNWds_fw658/format/webp';
+    final String networkImg = 'https://hbimg.huabanimg.com/06ef627a592f6c6b638720935b5e41782cafafe363c975-d13YKk_fw658/format/webp';
     final String assetImg = 'assets/images/demo_image.jpg';
     return Scaffold(
       appBar: AppBar(),
@@ -102,17 +97,14 @@ class _MyAppHomeState extends State<MyAppHome>
                     context: context,
                     builder: (_) => ProsteDialog(
                       type: _tipType,
-                      content: Text('this is package preinstall dialog',
-                          style: TextStyle(color: Colors.white)),
+                      content: Text('this is package preinstall dialog', style: TextStyle(color: Colors.white)),
                       insetPadding: EdgeInsets.all(15),
                       dialogRadius: 10,
                       title: Text('this is package preinstall dialog title'),
                       titlePadding: EdgeInsets.only(top: 20),
                       contentPadding: EdgeInsets.all(15),
-                      confirmButtonText:
-                          Text('next', style: TextStyle(color: Colors.white)),
-                      cancelButtonText:
-                          Text('back', style: TextStyle(color: Colors.green)),
+                      confirmButtonText: Text('next', style: TextStyle(color: Colors.white)),
+                      cancelButtonText: Text('back', style: TextStyle(color: Colors.green)),
                       showConfirmButton: true,
                       showCancelButton: true,
                       confirmButtonColor: Colors.cyan,
@@ -146,10 +138,8 @@ class _MyAppHomeState extends State<MyAppHome>
                       title: Text('this is package preinstall dialog title'),
                       titlePadding: EdgeInsets.only(top: 20),
                       contentPadding: EdgeInsets.all(15),
-                      confirmButtonText:
-                          Text('next', style: TextStyle(color: Colors.white)),
-                      cancelButtonText:
-                          Text('back', style: TextStyle(color: Colors.green)),
+                      confirmButtonText: Text('next', style: TextStyle(color: Colors.white)),
+                      cancelButtonText: Text('back', style: TextStyle(color: Colors.green)),
                       showConfirmButton: true,
                       showCancelButton: true,
                       confirmButtonColor: Colors.cyan,
@@ -166,6 +156,39 @@ class _MyAppHomeState extends State<MyAppHome>
                   );
                 },
                 child: Text('preinstall dialog'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => ProsteDialog(
+                      type: _tipType,
+                      content: Text('this is package preinstall dialog'),
+                      insetPadding: EdgeInsets.all(15),
+                      title: Text('this is package preinstall dialog title'),
+                      titlePadding: EdgeInsets.only(top: 20),
+                      contentPadding: EdgeInsets.all(15),
+                      confirmButtonColor: Colors.pink,
+                      confirmButtonText: Text('confirm', style: TextStyle(color: Colors.white)),
+                      cancelButtonText: Text('ignore', style: TextStyle(color: Colors.grey[600])),
+                      showConfirmButton: true,
+                      showCancelButton: true,
+                      btnInARow: false,
+                      btnPadding: EdgeInsets.symmetric(vertical: 10),
+                      columnConfirmBtnMargin: EdgeInsets.symmetric(horizontal: 50),
+                      buttonRadius: 20,
+                      onConfirm: () {
+                        print('preinstall confirm pressed');
+                        Navigator.pop(context);
+                      },
+                      onCancel: () {
+                        print('preinstall cancel pressed');
+                        Navigator.pop(context);
+                      },
+                    ),
+                  );
+                },
+                child: Text('column btn'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -193,8 +216,8 @@ class _MyAppHomeState extends State<MyAppHome>
                   showDialog(
                     context: context,
                     builder: (_) => ProsteCustomDialog(
-                      insetPadding: EdgeInsets.zero,
-                      dialogRadius: 50,
+                      insetPadding: EdgeInsets.symmetric(horizontal: 30),
+                      dialogRadius: 4,
                       header: AnimatedBuilder(
                         animation: _animationController,
                         builder: (context, child) {
@@ -209,14 +232,13 @@ class _MyAppHomeState extends State<MyAppHome>
                       content: Text('this is diy dialog'),
                       titlePadding: EdgeInsets.only(top: 20),
                       contentPadding: EdgeInsets.only(top: 50),
-                      confirmButtonText:
-                          Text('next', style: TextStyle(color: Colors.white)),
-                      cancelButtonText:
-                          Text('back', style: TextStyle(color: Colors.green)),
+                      confirmButtonText: Text('next', style: TextStyle(color: Colors.white)),
+                      cancelButtonText: Text('back', style: TextStyle(color: Colors.green)),
                       showConfirmButton: false,
                       showCancelButton: true,
                       confirmButtonColor: Colors.cyan,
                       cancelButtonColor: Colors.black,
+                      btnPadding: EdgeInsets.symmetric(horizontal: 100),
                       onConfirm: () {
                         print('diy confirm pressed');
                         Navigator.pop(context);
@@ -245,10 +267,8 @@ class _MyAppHomeState extends State<MyAppHome>
                       content: Text('this is content'),
                       titlePadding: EdgeInsets.only(top: 50),
                       contentPadding: EdgeInsets.symmetric(vertical: 80),
-                      confirmButtonText:
-                          Text('go', style: TextStyle(color: Colors.white)),
-                      cancelButtonText:
-                          Text('back', style: TextStyle(color: Colors.green)),
+                      confirmButtonText: Text('go', style: TextStyle(color: Colors.white)),
+                      cancelButtonText: Text('back', style: TextStyle(color: Colors.green)),
                       showConfirmButton: true,
                       showCancelButton: false,
                       buttonRadius: 80,

@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// 关闭按钮字体Icon
-const IconData closeIcon =
-    IconData(0xe67a, fontFamily: 'AliIcon', fontPackage: 'proste_dialog');
+const IconData closeIcon = IconData(0xe67a, fontFamily: 'AliIcon', fontPackage: 'proste_dialog');
 
 /// 宣传图片弹窗
 class ProsteAdvertiseDialog extends StatefulWidget {
@@ -19,6 +18,8 @@ class ProsteAdvertiseDialog extends StatefulWidget {
     this.imageRadius = BorderRadius.zero,
     this.closeBtnSize = 32,
     this.duration,
+    this.btnInARow = true,
+    this.btnPadding,
   })  : assert(factor > 0),
         assert(factor <= 1),
         super(key: key);
@@ -49,6 +50,12 @@ class ProsteAdvertiseDialog extends StatefulWidget {
 
   /// 延时关闭
   final Duration? duration;
+
+  /// 按钮是否放在同一行
+  final bool btnInARow;
+
+  /// 按钮的padding
+  final EdgeInsets? btnPadding;
 
   @override
   _ProsteAdvertiseDialogState createState() => _ProsteAdvertiseDialogState();

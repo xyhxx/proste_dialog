@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 默认间距
-const EdgeInsets _defaultInsetPadding =
-    EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
+const EdgeInsets _defaultInsetPadding = EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
 
 class ProsteBaseDialog extends StatelessWidget {
   ProsteBaseDialog({
@@ -26,6 +25,9 @@ class ProsteBaseDialog extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.elevation = 0,
     this.shadowColor,
+    this.btnInARow = true,
+    this.btnPadding,
+    this.columnConfirmBtnMargin,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -85,6 +87,15 @@ class ProsteBaseDialog extends StatelessWidget {
   /// 阴影颜色
   final Color? shadowColor;
 
+  /// 按钮是否放在同一行
+  final bool btnInARow;
+
+  /// 按钮的padding
+  final EdgeInsets? btnPadding;
+
+  /// 不是同一行是确认按钮的margin
+  final EdgeInsets? columnConfirmBtnMargin;
+
   /// 标题和描述内容
   List<Widget> _infoWidget() {
     return [
@@ -105,43 +116,80 @@ class ProsteBaseDialog extends StatelessWidget {
     Color themeColor = Theme.of(context).primaryColor;
     return Padding(
       padding: EdgeInsets.only(bottom: 15),
-      child: Row(
-        mainAxisAlignment: showConfirmButton && showCancelButton
-            ? MainAxisAlignment.spaceEvenly
-            : MainAxisAlignment.center,
-        children: [
-          if (showCancelButton)
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => cancelButtonColor ?? Colors.grey[400],
-                ),
-                shape: MaterialStateProperty.resolveWith(
-                  (states) => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(buttonRadius),
-                  ),
+      child: btnInARow ? _bntGroupRow(context, themeColor) : _btnGroupColulmn(context, themeColor),
+    );
+  }
+
+  /// 横向按钮组
+  Widget _bntGroupRow(BuildContext context, Color color) {
+    return Row(
+      mainAxisAlignment: showConfirmButton && showCancelButton ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
+      children: [
+        if (showCancelButton)
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(cancelButtonColor ?? Colors.grey[400]),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(buttonRadius),
                 ),
               ),
-              onPressed: onCancel ?? () => Navigator.pop(context),
-              child: Container(child: cancelButtonText),
+              padding: MaterialStateProperty.all(btnPadding),
             ),
-          if (showConfirmButton)
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => confirmButtonColor ?? themeColor,
+            onPressed: onCancel ?? () => Navigator.pop(context),
+            child: Container(child: cancelButtonText),
+          ),
+        if (showConfirmButton)
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(buttonRadius),
                 ),
-                shape: MaterialStateProperty.resolveWith(
-                  (states) => RoundedRectangleBorder(
+              ),
+              padding: MaterialStateProperty.all(btnPadding),
+            ),
+            onPressed: onConfirm ?? () => Navigator.pop(context),
+            child: confirmButtonText,
+          ),
+      ],
+    );
+  }
+
+  /// 竖向按钮组
+  Widget _btnGroupColulmn(BuildContext context, Color color) {
+    return Column(
+      children: [
+        if (showConfirmButton)
+          Container(
+            width: double.infinity,
+            padding: columnConfirmBtnMargin ?? EdgeInsets.symmetric(horizontal: 15),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(buttonRadius),
                   ),
                 ),
+                padding: MaterialStateProperty.all(btnPadding),
               ),
               onPressed: onConfirm ?? () => Navigator.pop(context),
               child: confirmButtonText,
             ),
-        ],
-      ),
+          ),
+        if (showCancelButton)
+          TextButton(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              padding: MaterialStateProperty.all(btnPadding),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            onPressed: onConfirm ?? () => Navigator.pop(context),
+            child: cancelButtonText,
+          ),
+      ],
     );
   }
 
@@ -174,16 +222,17 @@ class ProsteBaseDialog extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (widget != null)
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(dialogRadius),
-                              topRight: Radius.circular(dialogRadius),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(dialogRadius),
+                                topRight: Radius.circular(dialogRadius),
+                              ),
                             ),
                             child: widget,
                           ),
                         ..._infoWidget(),
-                        if (showConfirmButton || showCancelButton)
-                          _btnGroupWidget(context),
+                        if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
                       ],
                     )
                   : Row(
@@ -193,10 +242,13 @@ class ProsteBaseDialog extends StatelessWidget {
                       children: [
                         if (widget != null)
                           Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(dialogRadius),
-                                  bottomLeft: Radius.circular(dialogRadius)),
+                                  bottomLeft: Radius.circular(dialogRadius),
+                                ),
+                              ),
                               child: widget,
                             ),
                           ),
@@ -205,8 +257,7 @@ class ProsteBaseDialog extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ..._infoWidget(),
-                              if (showConfirmButton || showCancelButton)
-                                _btnGroupWidget(context),
+                              if (showConfirmButton || showCancelButton) _btnGroupWidget(context),
                             ],
                           ),
                         ),
