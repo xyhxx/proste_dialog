@@ -25,7 +25,8 @@ class ProsteBaseDialog extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.elevation = 0,
     this.shadowColor,
-    this.btnOneLine = true,
+    this.btnInARow = true,
+    this.btnPadding,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -86,7 +87,10 @@ class ProsteBaseDialog extends StatelessWidget {
   final Color? shadowColor;
 
   /// 按钮是否放在同一行
-  final bool btnOneLine;
+  final bool btnInARow;
+
+  /// 按钮的padding
+  final EdgeInsets? btnPadding;
 
   /// 标题和描述内容
   List<Widget> _infoWidget() {
@@ -108,49 +112,80 @@ class ProsteBaseDialog extends StatelessWidget {
     Color themeColor = Theme.of(context).primaryColor;
     return Padding(
       padding: EdgeInsets.only(bottom: 15),
-      child: Row(
-        mainAxisAlignment: showConfirmButton && showCancelButton ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
-        children: [
-          if (showCancelButton)
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => cancelButtonColor ?? Colors.grey[400],
-                ),
-                shape: MaterialStateProperty.resolveWith(
-                  (states) => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(buttonRadius),
-                  ),
-                ),
-              ),
-              onPressed: onCancel ?? () => Navigator.pop(context),
-              child: Container(child: cancelButtonText),
-            ),
-          if (showConfirmButton)
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => confirmButtonColor ?? themeColor,
-                ),
-                shape: MaterialStateProperty.resolveWith(
-                  (states) => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(buttonRadius),
-                  ),
-                ),
-              ),
-              onPressed: onConfirm ?? () => Navigator.pop(context),
-              child: confirmButtonText,
-            ),
-        ],
-      ),
+      child: btnInARow ? _bntGroupRow(context, themeColor) : _btnGroupColulmn(context, themeColor),
     );
   }
 
   /// 横向按钮组
-  Widget _bntGroupOneLine(BuildContext context) {}
+  Widget _bntGroupRow(BuildContext context, Color color) {
+    return Row(
+      mainAxisAlignment: showConfirmButton && showCancelButton ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
+      children: [
+        if (showCancelButton)
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(buttonRadius),
+                ),
+              ),
+              padding: MaterialStateProperty.all(btnPadding),
+            ),
+            onPressed: onCancel ?? () => Navigator.pop(context),
+            child: Container(child: cancelButtonText),
+          ),
+        if (showConfirmButton)
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(buttonRadius),
+                ),
+              ),
+              padding: MaterialStateProperty.all(btnPadding),
+            ),
+            onPressed: onConfirm ?? () => Navigator.pop(context),
+            child: confirmButtonText,
+          ),
+      ],
+    );
+  }
 
   /// 竖向按钮组
-  Widget _btnGroupNoOneLine(BuildContext context) {}
+  Widget _btnGroupColulmn(BuildContext context, Color color) {
+    return Column(
+      children: [
+        if (showConfirmButton)
+          Container(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(confirmButtonColor ?? color),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(buttonRadius),
+                  ),
+                ),
+                padding: MaterialStateProperty.all(btnPadding),
+              ),
+              onPressed: onConfirm ?? () => Navigator.pop(context),
+              child: confirmButtonText,
+            ),
+          ),
+        if (showCancelButton)
+          TextButton(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              padding: MaterialStateProperty.all(btnPadding),
+            ),
+            onPressed: onConfirm ?? () => Navigator.pop(context),
+            child: confirmButtonText,
+          )
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
