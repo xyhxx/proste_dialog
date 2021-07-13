@@ -25,6 +25,7 @@ class ProsteBaseDialog extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.elevation = 0,
     this.shadowColor,
+    this.btnOneLine = true,
   }) : super(key: key);
 
   /// dialog与屏幕之间的间距
@@ -83,6 +84,9 @@ class ProsteBaseDialog extends StatelessWidget {
 
   /// 阴影颜色
   final Color? shadowColor;
+
+  /// 按钮是否放在同一行
+  final bool btnOneLine;
 
   /// 标题和描述内容
   List<Widget> _infoWidget() {
