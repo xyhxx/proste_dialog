@@ -11,7 +11,7 @@ class ProsteBaseDialog extends StatelessWidget {
     this.dialogRadius = 5,
     this.widget,
     this.title,
-    this.content,
+    required this.content,
     this.titlePadding = const EdgeInsets.only(top: 15, left: 15, right: 15),
     this.contentPadding = const EdgeInsets.all(10),
     this.confirmButtonText = const Text('Confirm'),
@@ -41,13 +41,13 @@ class ProsteBaseDialog extends StatelessWidget {
   final Widget? widget;
 
   /// 标题组件
-  final Text? title;
+  final Widget? title;
 
   /// 标题的padding
   final EdgeInsets titlePadding;
 
   /// 描述文字
-  final Text? content;
+  final Widget content;
 
   /// 描述的间距
   final EdgeInsets contentPadding;

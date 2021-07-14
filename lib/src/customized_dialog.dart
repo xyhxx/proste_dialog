@@ -49,13 +49,13 @@ class ProsteDialog extends StatefulWidget {
   final DialogTipType type;
 
   /// 标题组件
-  final Text? title;
+  final Widget? title;
 
   /// 标题的padding
   final EdgeInsets titlePadding;
 
   /// 描述文字
-  final Text content;
+  final Widget content;
 
   /// 描述的间距
   final EdgeInsets contentPadding;

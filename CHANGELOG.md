@@ -1,3 +1,9 @@
+## [2.1.0]
+
+* edit title type to Widget
+
+* edit content type to Widget
+
 ## [2.0.0]
 
 * add button vertical layout

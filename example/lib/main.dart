@@ -101,6 +101,70 @@ class _MyAppHomeState extends State<MyAppHome>
                   showDialog(
                     context: context,
                     builder: (_) => ProsteDialog(
+                      onCancel: () {
+                        print('text rich close');
+                        Navigator.pop(context);
+                      },
+                      content: Text.rich(
+                        TextSpan(children: [
+                          TextSpan(text: 'now'),
+                          TextSpan(
+                              text: 'get', style: TextStyle(color: Colors.red)),
+                          TextSpan(
+                              text: 'someThings',
+                              style: TextStyle(color: Colors.blue))
+                        ]),
+                      ),
+                    ),
+                  );
+                },
+                child: Text('textRich btn'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => ProsteCustomDialog(
+                      onConfirm: () {
+                        print('scroll confirm');
+                        Navigator.pop(context);
+                      },
+                      content: Container(
+                        height: 100,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                              Text('is is a line'),
+                            ],
+                          ),
+                        ),
+                      ),
+                      header: Image.asset(
+                        assetImg,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+                child: Text('content scroll dialog'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => ProsteDialog(
                       type: _tipType,
                       content: Text('this is package preinstall dialog',
                           style: TextStyle(color: Colors.white)),
