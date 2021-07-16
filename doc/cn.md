@@ -1,3 +1,6 @@
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/logo/dialog.png" />
+
+
 # 介绍
 
 package的功能和设计思路参考了<a href="https://github.com/xsahil03x/giffy_dialog">giffy_dialog</a>，在giffy_dialog的基础上提供了更高的自由度和更强的扩展性，您可以使用package中预设的各种类型提示，您也可以自己设置想要展示的元素。相比于giffy_dialog，自定义不仅限于图片，您也可以传入任何widget或者自定义的动画。proste_dialog需要通过showDialog来进行展示，如果您想要在展示过程中使用动画效果，可以参考<a href="https://github.com/JackJonson/flutter_animated_dialog">flutter_animated_dialog</a>。

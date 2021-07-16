@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/xyhxx/program_preview/master/logo/dialog.png" />
+
 English | <a href="https://github.com/xyhxx/proste_dialog/blob/master/doc/cn.md" >中文</a>
 
 # Introduce

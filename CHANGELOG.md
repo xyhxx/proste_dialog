@@ -1,3 +1,7 @@
+## [2.1.1]
+
+* add logo
+
 ## [2.1.0]
 
 * edit title type to Widget
