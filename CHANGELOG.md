@@ -1,3 +1,7 @@
+## [2.1.2]
+
+* fix readme
+
 ## [2.1.1]
 
 * add logo

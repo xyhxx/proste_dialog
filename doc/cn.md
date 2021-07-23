@@ -54,8 +54,8 @@ __只有当btnInARow为false时，columnconfirmButtonMargin才会生效__
 | insetPadding | EdgeInsets | EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0) | 
 | dialogRadius | double | 5 | 
 | type | DialogTipType | DialogTipType.success | 
-| title | Text | null | 
-| content | Text(required) | null |
+| title | Widget | null | 
+| content | Widget(required) | null |
 | titlePadding | EdgeInsets | EdgeInsets.only(top: 15, left: 15, right: 15) | 
 | contentPadding | EdgeInsets | EdgeInsets.all(10) |
 | confirmButtonText | Text | Text('Confirm') |
@@ -116,8 +116,8 @@ showDialog(
 | insetPadding | EdgeInsets | EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0) | 
 | dialogRadius | double | 5 | 
 | header | Widget | null | 
-| title | Text | null | 
-| content | Text(required) | null |
+| title | Widget | null | 
+| content | Widget(required) | null |
 | titlePadding | EdgeInsets | EdgeInsets.only(top: 15, left: 15, right: 15) | 
 | contentPadding | EdgeInsets | EdgeInsets.all(10) |
 | confirmButtonText | Text | Text('Confirm') |
